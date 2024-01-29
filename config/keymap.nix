@@ -3,7 +3,7 @@
   plugins.which-key = {
     enable = true;
     operators = { gc = "Comments"; };
-
+    triggers = [ "<leader>" "g" ];
     registrations = {
       "<c-h>" = [ "<c-w>h" "Move top" ];
       "<c-j>" = [ "<c-w>j" "Move down" ];

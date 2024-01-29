@@ -1,9 +1,16 @@
+{ pkgs, ... }:
 {
   plugins.which-key.registrations = {
     "<c-n>" = [ "<cmd>NvimTreeToggle<CR>" "Open Tree in left side" ];
+    "<leader>t" = [
+      {
+        "ib" = [ "<cmd>IBLToggle<cr>" "Toggle Indent Blankline" ];
+        "ih" = [ "<cmd>lua require('lsp-inlayhints').toggle()<cr>" ];
+      }
+    ];
   };
 
-  colorschemes.nord.enable = true;
+  plugins.cursorline.enable = true;
 
   # based on {https://github.com/r17x/nixpkgs/blob/main/configs/nvim/lua/config/nvim-tree.lua}
   plugins.nvim-tree.enable = true;
@@ -14,9 +21,72 @@
   plugins.nvim-tree.autoReloadOnWrite = true;
   plugins.nvim-tree.git.enable = true;
   plugins.nvim-tree.filters.dotfiles = true;
+  plugins.nvim-tree.renderer.highlightGit = true;
+  plugins.nvim-tree.renderer.indentMarkers.enable = true;
 
+  plugins.indent-blankline.enable = true;
+  plugins.indent-blankline.indent.char = "┊";
+  plugins.indent-blankline.exclude.buftypes = [ "terminal" "neorg" ];
+  plugins.indent-blankline.exclude.filetypes = [
+    "help"
+    "terminal"
+    "dashboard"
+    "lspinfo"
+    "TelescopePrompt"
+    "TelescopeResults"
+  ];
+  extraPlugins = with pkgs.vimPlugins; [ edge unicode-vim lsp-inlayhints-nvim ];
+  extraConfigLua = ''
+    vim.opt.list = true
+    vim.opt.listchars:append("eol:↴")
+
+    require('lsp-inlayhints').setup({
+      renderer = "inlay-hints/render/virtline",
+    })
+  '';
+  colorscheme = "edge";
+  extraConfigLuaPre = ''
+    vim.cmd [[ 
+      if has('termguicolors') 
+        set termguicolors 
+      endif 
+    ]]
+    vim.g.edge_style = 'neon'
+    -- TODO: fix directory creation in Nix befor enable edge_better_performance
+    -- let g:edge_better_performance = 1
+  '';
 
   # based on {https://github.com/r17x/nixpkgs/blob/main/configs/nvim/lua/config/lualine.lua}
-  plugins.lualine.enable = true;
-  plugins.lualine.theme = "nord";
+  plugins.lualine = {
+    enable = true;
+    theme = "edge";
+    componentSeparators = {
+      left = "|";
+      right = "|";
+    };
+    sectionSeparators = {
+      left = "";
+      right = "";
+    };
+  };
+
+  plugins.treesitter = {
+    enable = true;
+    folding = true;
+    indent = true;
+  };
+
+  plugins.rainbow-delimiters = {
+    enable = true;
+    highlight = [
+      "RainbowLevel1"
+      "RainbowLevel2"
+      "RainbowLevel3"
+      "RainbowLevel4"
+      "RainbowLevel5"
+      "RainbowLevel6"
+      "RainbowLevel7"
+      "RainbowLevel0"
+    ];
+  };
 }
