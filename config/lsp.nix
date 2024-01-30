@@ -1,4 +1,14 @@
+{ pkgs, ... }:
 {
+  extraPackages = with pkgs; [
+    ocamlPackages.ocaml-lsp
+    ocamlPackages.ocamlformat
+  ];
+
+  extraConfigLuaPost = ''
+    require'lspconfig'.ocamllsp.setup{}
+  '';
+
   plugins.which-key.registrations = {
     "[e" = [ "<cmd>Lspsaga diagnostic_jump_next<cr>" "Next Diagnostic" ];
     "]e" = [ "<cmd>Lspsaga diagnostic_jump_prev<cr>" "Previous Diagnostic" ];
@@ -13,6 +23,11 @@
     "<leader>f" = [ "<cmd>Lspsaga finder<cr>" "Code Finder" ];
     "<leader>a" = [ "<cmd>Lspsaga code_action<cr>" "Code Action" ];
     "<c-a>" = [ "<cmd>Lspsaga code_action<cr>" "Code Action" ];
+  };
+
+  filetype.extension = {
+    "re" = "ocaml";
+    "rei" = "ocaml";
   };
 
   plugins.nvim-cmp.mapping =
@@ -43,6 +58,7 @@
     onAttach = builtins.readFile ./lsp.onAttach.lua;
     postConfig = builtins.readFile ./lsp.postConfig.lua;
     servers = {
+
       bashls.enable = true;
       bashls.autostart = true;
 
@@ -51,6 +67,9 @@
 
       eslint.enable = true;
       eslint.autostart = true;
+
+      gopls.enable = true;
+      gopls.autostart = true;
 
       htmx.enable = false;
       htmx.autostart = true;
@@ -90,7 +109,6 @@
     ui.codeAction = "⛭";
   };
 
-  # TODO: allowUnfree 
   plugins.codeium-nvim.enable = true;
   plugins.wtf.enable = true;
   plugins.nvim-autopairs.enable = true;

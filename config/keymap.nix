@@ -5,6 +5,10 @@
     operators = { gc = "Comments"; };
     triggers = [ "<leader>" "g" ];
     registrations = {
+      "<leader>w" = [ "<cmd>w<cr>" "Write current buffer" ];
+      "<leader>ww" = [ "<cmd>w!<cr>" "Write current buffer forced" ];
+      "<leader>wq" = [ "<cmd>wq<cr>" "Write current buffer and quit" ];
+      "<leader>wqq" = [ "<cmd>wq<cr>" "Write & quit forced" ];
       "<c-h>" = [ "<c-w>h" "Move top" ];
       "<c-j>" = [ "<c-w>j" "Move down" ];
       "<c-k>" = [ "<c-w>k" "Move left" ];
