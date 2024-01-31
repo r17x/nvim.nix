@@ -71,6 +71,9 @@
       gopls.enable = true;
       gopls.autostart = true;
 
+      hls.enable = true;
+      hls.autostart = true;
+
       htmx.enable = false;
       htmx.autostart = true;
 
