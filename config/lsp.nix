@@ -3,6 +3,7 @@
   extraPackages = with pkgs; [
     ocamlPackages.ocaml-lsp
     ocamlPackages.ocamlformat
+    ghc
   ];
 
   extraConfigLuaPost = ''
@@ -74,7 +75,7 @@
       hls.enable = true;
       hls.autostart = true;
 
-      htmx.enable = false;
+      htmx.enable = !pkgs.stdenv.isDarwin;
       htmx.autostart = true;
 
       jsonls.enable = true;
