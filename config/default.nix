@@ -3,7 +3,7 @@
   imports = [
     ./globals.nix
     ./ui.nix
-    ./keymap.nix
+    ./navigations.nix
     ./lsp.nix
   ];
 }

@@ -11,6 +11,7 @@
   '';
 
   plugins.which-key.registrations = {
+    "<leader><space>" = [ "<cmd>Lspsaga term_toggle<cr>" "Open Terminal" ];
     "[e" = [ "<cmd>Lspsaga diagnostic_jump_next<cr>" "Next Diagnostic" ];
     "]e" = [ "<cmd>Lspsaga diagnostic_jump_prev<cr>" "Previous Diagnostic" ];
     "K" = [ "<cmd>Lspsaga hover_doc<cr>" "Code Hover" ];
