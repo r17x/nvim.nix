@@ -1,14 +1,14 @@
 { pkgs, ... }:
 {
-  plugins.which-key.registrations = {
-    "<c-n>" = [ "<cmd>NvimTreeToggle<CR>" "Open Tree in left side" ];
-    "<leader>t" = [
-      {
-        "ib" = [ "<cmd>IBLToggle<cr>" "Toggle Indent Blankline" ];
-        "ih" = [ "<cmd>lua require('lsp-inlayhints').toggle()<cr>" ];
-      }
-    ];
-  };
+
+  plugins.which-key.registrations."<c-n>" = [ "<cmd>NvimTreeToggle<CR>" "Open Tree in left side" ];
+  plugins.which-key.registrations."<leader>t" = [
+    {
+      "ib" = [ "<cmd>IBLToggle<cr>" "Toggle Indent Blankline" ];
+      "ih" = [ "<cmd>lua require('lsp-inlayhints').toggle()<cr>" ];
+    }
+  ];
+
 
   plugins.cursorline.enable = true;
 
@@ -57,36 +57,29 @@
   '';
 
   # based on {https://github.com/r17x/nixpkgs/blob/main/configs/nvim/lua/config/lualine.lua}
-  plugins.lualine = {
-    enable = true;
-    theme = "edge";
-    componentSeparators = {
-      left = "|";
-      right = "|";
-    };
-    sectionSeparators = {
-      left = "";
-      right = "";
-    };
-  };
 
-  plugins.treesitter = {
-    enable = true;
-    folding = true;
-    indent = true;
-  };
+  plugins.lualine.enable = true;
+  plugins.lualine.theme = "edge";
 
-  plugins.rainbow-delimiters = {
-    enable = true;
-    highlight = [
-      "RainbowLevel1"
-      "RainbowLevel2"
-      "RainbowLevel3"
-      "RainbowLevel4"
-      "RainbowLevel5"
-      "RainbowLevel6"
-      "RainbowLevel7"
-      "RainbowLevel0"
-    ];
-  };
+  plugins.lualine.componentSeparators.left = "|";
+  plugins.lualine.componentSeparators.right = "|";
+
+  plugins.lualine.sectionSeparators.left = "";
+  plugins.lualine.sectionSeparators.right = "";
+
+  plugins.treesitter.enable = true;
+  plugins.treesitter.folding = true;
+  plugins.treesitter.indent = true;
+
+  plugins.rainbow-delimiters.enable = true;
+  plugins.rainbow-delimiters.highlight = [
+    "RainbowLevel1"
+    "RainbowLevel2"
+    "RainbowLevel3"
+    "RainbowLevel4"
+    "RainbowLevel5"
+    "RainbowLevel6"
+    "RainbowLevel7"
+    "RainbowLevel0"
+  ];
 }

@@ -1,10 +1,6 @@
 {
-  config = {
-    globals.mapleader = " ";
-    options = {
-      number = true;
-      relativenumber = true;
-      shiftwidth = 2;
-    };
-  };
+  config.globals.mapleader = " ";
+  config.options.number = true;
+  config.options.relativenumber = true;
+  config.options.shiftwidth = 2;
 }
