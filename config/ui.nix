@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  extraPlugins = with pkgs.vimPlugins; [ edge unicode-vim lsp-inlayhints-nvim ];
 
   plugins.which-key.registrations."<c-n>" = [ "<cmd>NvimTreeToggle<CR>" "Open Tree in left side" ];
   plugins.which-key.registrations."<leader>t" = [
@@ -35,7 +36,6 @@
     "TelescopePrompt"
     "TelescopeResults"
   ];
-  extraPlugins = with pkgs.vimPlugins; [ edge unicode-vim lsp-inlayhints-nvim ];
   extraConfigLua = ''
     vim.opt.list = true
     vim.opt.listchars:append("eol:↴")

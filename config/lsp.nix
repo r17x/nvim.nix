@@ -14,10 +14,14 @@
   filetype.extension."rei" = "ocaml";
 
   plugins.which-key.registrations."<leader><space>" = [ "<cmd>Lspsaga term_toggle<cr>" "Open Terminal" ];
+  plugins.which-key.registrations."ge" = [ "<cmd>Trouble<cr>" "Next Diagnostic" ];
   plugins.which-key.registrations."[e" = [ "<cmd>Lspsaga diagnostic_jump_next<cr>" "Next Diagnostic" ];
   plugins.which-key.registrations."]e" = [ "<cmd>Lspsaga diagnostic_jump_prev<cr>" "Previous Diagnostic" ];
   plugins.which-key.registrations."K" = [ "<cmd>Lspsaga hover_doc<cr>" "Code Hover" ];
   plugins.which-key.registrations."F" = [ "<cmd>lua vim.lsp.buf.format({ async = true }) <cr>" "Format the current buffer" ];
+  plugins.which-key.registrations."gl" = [ "<cmd>LspInfo<cr>" "Show LSP Info" ];
+  plugins.which-key.registrations."gt" = [ "<cmd>Lspsaga outline<cr>" "Code Action" ];
+  plugins.which-key.registrations."ga" = [ "<cmd>Lspsaga code_action<cr>" "Code Action" ];
   plugins.which-key.registrations."gi" = [ "<cmd>Lspsaga incoming_calls<cr>" "Incoming Calls" ];
   plugins.which-key.registrations."go" = [ "<cmd>Lspsaga outgoing_calls<cr>" "Outgoing Calls" ];
   plugins.which-key.registrations."gD" = [ "<cmd>Lspsaga goto_definition<cr>" "Go to Definition" ];
@@ -25,8 +29,6 @@
   plugins.which-key.registrations."gr" = [ "<cmd>Lspsaga rename<cr>" "Code Rename" ];
   plugins.which-key.registrations."gs" = [ ''<cmd>lua require("wtf").search() <cr>'' "Search diagnostic with Google" ];
   plugins.which-key.registrations."<leader>f" = [ "<cmd>Lspsaga finder<cr>" "Code Finder" ];
-  plugins.which-key.registrations."<leader>a" = [ "<cmd>Lspsaga code_action<cr>" "Code Action" ];
-  plugins.which-key.registrations."<c-a>" = [ "<cmd>Lspsaga code_action<cr>" "Code Action" ];
 
   plugins.nvim-cmp.mapping."<C-Space>" = "cmp.mapping.complete()";
   plugins.nvim-cmp.mapping."<C-d>" = "cmp.mapping.scroll_docs(-4)";
@@ -100,6 +102,7 @@
   plugins.lspsaga.lightbulb.virtualText = true;
   plugins.lspsaga.lightbulb.debounce = 40;
   plugins.lspsaga.ui.codeAction = "⛭";
+  plugins.trouble.enable = true;
 
   plugins.codeium-nvim.enable = true;
   plugins.wtf.enable = true;
