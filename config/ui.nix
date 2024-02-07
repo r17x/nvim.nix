@@ -47,14 +47,15 @@
   '';
   colorscheme = "edge";
   extraConfigLuaPre = ''
-    vim.cmd [[ 
-      if has('termguicolors') 
-        set termguicolors 
-      endif 
-    ]]
-    vim.g.edge_style = 'neon'
-    -- TODO: fix directory creation in Nix befor enable edge_better_performance
-    -- let g:edge_better_performance = 1
+        vim.cmd [[ 
+          if has('termguicolors') 
+    	set guicursor+=n:hor20-Cursor/lCursor
+            set termguicolors 
+          endif 
+        ]]
+        vim.g.edge_style = 'neon'
+        -- TODO: fix directory creation in Nix befor enable edge_better_performance
+        -- let g:edge_better_performance = 1
   '';
 
   # based on {https://github.com/r17x/nixpkgs/blob/main/configs/nvim/lua/config/lualine.lua}
