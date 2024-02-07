@@ -3,6 +3,7 @@
   imports = [
     ./globals.nix
     ./git.nix
+    ./dashboard.nix
     ./ui.nix
     ./navigations.nix
     ./lsp.nix
