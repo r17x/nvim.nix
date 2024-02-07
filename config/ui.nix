@@ -1,12 +1,12 @@
 { pkgs, ... }:
 {
-  extraPlugins = with pkgs.vimPlugins; [ edge unicode-vim lsp-inlayhints-nvim ];
+  extraPlugins = with pkgs.vimPlugins; [ edge unicode-vim lsp-inlayhints-nvim lualine-lsp-progress ];
 
   plugins.which-key.registrations."<c-n>" = [ "<cmd>NvimTreeToggle<CR>" "Open Tree in left side" ];
   plugins.which-key.registrations."<leader>t" = [
     {
       "ib" = [ "<cmd>IBLToggle<cr>" "Toggle Indent Blankline" ];
-      "ih" = [ "<cmd>lua require('lsp-inlayhints').toggle()<cr>" ];
+      "ih" = [ "<cmd>lua require('lsp-inlayhints').toggle()<cr>" "Toggle Inlay Hints" ];
     }
   ];
 
@@ -60,12 +60,61 @@
 
   plugins.lualine.enable = true;
   plugins.lualine.theme = "edge";
-
-  plugins.lualine.componentSeparators.left = "|";
-  plugins.lualine.componentSeparators.right = "|";
-
+  plugins.lualine.componentSeparators.left = "";
+  plugins.lualine.componentSeparators.right = "";
   plugins.lualine.sectionSeparators.left = "";
   plugins.lualine.sectionSeparators.right = "";
+  plugins.lualine.sections.lualine_a = [
+    {
+      name = "mode";
+      separator.right = "";
+      extraConfig.padding.left = 1;
+    }
+  ];
+
+  plugins.lualine.sections.lualine_b = [
+    "branch"
+    {
+      name = "filename";
+      extraConfig.symbols = {
+        modified = "♼";
+        readonly = "⏿";
+        unnamed = "⍬";
+        newfile = "⊕";
+      };
+    }
+    "filesize"
+  ];
+  plugins.lualine.sections.lualine_c = [ "diff" "diagnostics" "searchcount" "selectioncount" ];
+  plugins.lualine.sections.lualine_x = [
+    {
+      name = "lsp_progress";
+      extraConfig.colors.title = "Cyan";
+      extraConfig.separators.component = " ";
+      extraConfig.separators.percentage.pre = "";
+      extraConfig.separators.percentage.post = "%% ";
+      extraConfig.separators.title.pre = "";
+      extraConfig.separators.title.post = ": ";
+      extraConfig.displayComponents = [
+        "spinner"
+        "lsp_client_name"
+        # [ "title" "percentage" "message" ]
+      ];
+      extraConfig.timer.progressEnddelay = 500;
+      extraConfig.timer.spinner = 1000;
+      extraConfig.timer.lspClientNameEnddelay = 1000;
+      extraConfig.spinnerSymbols = [ "⣀" "⣠" "⣴" "⣶" "⣾" "⣿" "⢿" "⡿" ];
+    }
+  ];
+  plugins.lualine.sections.lualine_y = [ "filetype" "progress" ];
+  plugins.lualine.sections.lualine_z = [
+    {
+      name = "location";
+      separator.left = "";
+      extraConfig.padding.right = 1;
+    }
+  ];
+
 
   plugins.treesitter.enable = true;
   plugins.treesitter.folding = true;
