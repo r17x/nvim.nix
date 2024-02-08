@@ -16,6 +16,7 @@ let
 in
 
 {
+  clipboard.register = "unnamed";
   plugins.telescope.enable = true;
 
   plugins.which-key.enable = true;
@@ -27,8 +28,8 @@ in
   plugins.which-key.registrations."<leader>wq" = [ "<cmd>wq<cr>" "Write current buffer and quit" ];
   plugins.which-key.registrations."<leader>wqq" = [ "<cmd>wq<cr>" "Write & quit forced" ];
 
-  plugins.which-key.registrations."<leader>y" = [ "*+y" "Copy to Clipboard!" ];
-  plugins.which-key.registrations."<leader>p" = [ "*+p" "Paste from Clipboard" ];
+  plugins.which-key.registrations."Y" = [ "\"+yy" "Copy to Clipboard!" ];
+  plugins.which-key.registrations."p" = [ "\"+p" "Paste from Clipboard" ];
 
   plugins.which-key.registrations."<c-h>" = [ "<c-w>h" "Move top" ];
   plugins.which-key.registrations."<c-j>" = [ "<c-w>j" "Move down" ];
