@@ -1,9 +1,14 @@
 { pkgs, ... }:
 {
-  extraPackages = with pkgs; [
-    ocamlPackages.ocaml-lsp
-    ocamlPackages.ocamlformat
-    ghc
+  extraPackages = [
+    pkgs.ocamlPackages.ocaml-lsp
+    # For better format in OCaml Lang need to install 
+    # 👇
+    # pkgs.ocamlPackages.ocamlformat
+
+    # For Haskell
+    # 👇
+    # ghc
   ];
 
   extraConfigLuaPost = ''
