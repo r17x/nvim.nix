@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  extraPlugins = with pkgs.vimPlugins; [
-    ChatGPT-nvim
-  ];
-
   extraPackages = [
     pkgs.ocamlPackages.ocaml-lsp
     # For better format in OCaml Lang need to install 
