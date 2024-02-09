@@ -17,6 +17,12 @@
     } @ inputs:
     let
       config = import ./config; # import the module directly
+
+      # all vimPlugins from inputs with prefix "vimPlugins_"
+      # example:
+      # inputs.vimPlugins_myvim-plugins-from-github.url = "github:owner/repo";
+      # inputs.vimPlugins_myvim-plugins-from-github.flake = false;
+      mkFlake2VimPlugins = import ./nix/lib/mkFlake2VimPlugin.nix inputs;
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
@@ -47,6 +53,16 @@
           _module.args.pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
+            overlays = [
+              (_final: prev: {
+                vimPlugins = prev.vimPlugins.extend (_final: _prev:
+                  mkFlake2VimPlugins {
+                    buildVimPlugin = prev.vimUtils.buildVimPlugin;
+                    lib = prev.lib;
+                  }
+                );
+              })
+            ];
           };
           checks = {
             # Run `nix flake check .` to verify that your config is not broken
