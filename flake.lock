@@ -208,7 +208,8 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "vimPlugins_nvim-sops": "vimPlugins_nvim-sops"
       }
     },
     "systems": {
@@ -223,6 +224,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "vimPlugins_nvim-sops": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1690776582,
+        "narHash": "sha256-kppkZtdDQzsqOL+iAclc8Ziij8ZaC9r1m6SNKEu3fTs=",
+        "owner": "lucidph3nx",
+        "repo": "nvim-sops",
+        "rev": "cb2209562d00ef8c6c88bdec836d9edb8fbb96ef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lucidph3nx",
+        "repo": "nvim-sops",
         "type": "github"
       }
     }

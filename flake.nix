@@ -7,6 +7,9 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.inputs.flake-parts.follows = "flake-parts";
     flake-parts.url = "github:hercules-ci/flake-parts";
+
+    vimPlugins_nvim-sops.url = "github:lucidph3nx/nvim-sops";
+    vimPlugins_nvim-sops.flake = false;
   };
 
   outputs =
@@ -64,6 +67,7 @@
               })
             ];
           };
+
           checks = {
             # Run `nix flake check .` to verify that your config is not broken
             default = nixvimLib.check.mkTestDerivationFromNvim {
