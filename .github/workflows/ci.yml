@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
 jobs:
-  test:
+  build:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-14]
