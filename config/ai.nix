@@ -5,29 +5,31 @@
 
   extraConfigLuaPost = "require('chatgpt').setup()";
 
-  plugins.which-key.registrations."<leader>cc" = [ [ "<cmd>ChatGPT<cr>" "Open ChatGPT Prompt" { mode = [ "n" "v" ]; } ] ];
+  plugins.which-key.registrations = {
+    "<leader>cc" = [ [ "<cmd>ChatGPT<cr>" "Open ChatGPT Prompt" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>ce" = [ [ "<cmd>ChatGPTEditWithInstruction<CR>" "Edit with instruction" { modes = [ "n" "v" ]; } ] ];
+    "<leader>ce" = [ [ "<cmd>ChatGPTEditWithInstruction<cr>" "Edit with instruction" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>cg" = [ [ "<cmd>ChatGPTRun grammar_correction<CR>" "Grammar Correction" { modes = [ "n" "v" ]; } ] ];
+    "<leader>cg" = [ [ "<cmd>ChatGPTRun grammar_correction<cr>" "Grammar Correction" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>ct" = [ [ "<cmd>ChatGPTRun translate<CR>" "Translate" { modes = [ "n" "v" ]; } ] ];
+    "<leader>ct" = [ [ "<cmd>ChatGPTRun translate<cr>" "Translate" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>ck" = [ [ "<cmd>ChatGPTRun keywords<CR>" "Keywords" { modes = [ "n" "v" ]; } ] ];
+    "<leader>ck" = [ [ "<cmd>ChatGPTRun keywords<cr>" "Keywords" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>cd" = [ [ "<cmd>ChatGPTRun docstring<CR>" "Docstring" { modes = [ "n" "v" ]; } ] ];
+    "<leader>cd" = [ [ "<cmd>ChatGPTRun docstring<cr>" "Docstring" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>ca" = [ [ "<cmd>ChatGPTRun add_tests<CR>" "Add Tests" { modes = [ "n" "v" ]; } ] ];
+    "<leader>ca" = [ [ "<cmd>ChatGPTRun add_tests<cr>" "Add Tests" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>co" = [ [ "<cmd>ChatGPTRun optimize_code<CR>" "Optimize Code" { modes = [ "n" "v" ]; } ] ];
+    "<leader>co" = [ [ "<cmd>ChatGPTRun optimize_code<cr>" "Optimize Code" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>cs" = [ [ "<cmd>ChatGPTRun summarize<CR>" "Summarize" { modes = [ "n" "v" ]; } ] ];
+    "<leader>cs" = [ [ "<cmd>ChatGPTRun summarize<cr>" "Summarize" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>cf" = [ [ "<cmd>ChatGPTRun fix_bugs<CR>" "Fix Bugs" { modes = [ "n" "v" ]; } ] ];
+    "<leader>cf" = [ [ "<cmd>ChatGPTRun fix_bugs<cr>" "Fix Bugs" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>cx" = [ [ "<cmd>ChatGPTRun explain_code<CR>" "Explain Code" { modes = [ "n" "v" ]; } ] ];
+    "<leader>cx" = [ [ "<cmd>ChatGPTRun explain_code<cr>" "Explain Code" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>cr" = [ [ "<cmd>ChatGPTRun roxygen_edit<CR>" "Roxygen Edit" { modes = [ "n" "v" ]; } ] ];
+    "<leader>cr" = [ [ "<cmd>ChatGPTRun roxygen_edit<cr>" "Roxygen Edit" { mode = [ "n" "v" ]; } ] ];
 
-  plugins.which-key.registrations."<leader>cl" = [ [ "<cmd>ChatGPTRun code_readability_analysis<CR>" "Code Readability Analysis" { modes = [ "n" "v" ]; } ] ];
+    "<leader>cl" = [ [ "<cmd>ChatGPTRun code_readability_analysis<cr>" "Code Readability Analysis" { mode = [ "n" "v" ]; } ] ];
+  };
 }

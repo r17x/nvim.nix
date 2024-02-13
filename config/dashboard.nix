@@ -1,18 +1,19 @@
 {
-  plugins.dashboard.enable = true;
-  plugins.dashboard.hideStatusline = true;
-  plugins.dashboard.hideTabline = true;
-  plugins.dashboard.center = [
-    { icon = " "; desc = "Taking Notes (Norg)       SPC n n"; action = "Telescope neorg switch_workspace"; }
-    { icon = " "; desc = "Find File                 SPC f f"; action = "Telescope find_files"; }
-    { icon = " "; desc = "Recents                   SPC f o"; action = "Telescope oldfiles"; }
-    { icon = " "; desc = "Find Word                 SPC f w"; action = "Telescope live_grep"; }
-    { icon = "洛"; desc = "New File                  SPC f n"; action = "DashboardNewFile"; }
-    { icon = " "; desc = "Bookmarks                 SPC b m"; action = "Telescope marks"; }
-    { icon = " "; desc = "Load Last Session         SPC l  "; action = "SessionLoad"; }
-  ];
-  plugins.dashboard.header = [
-    ''
+  plugins.dashboard = {
+    enable = true;
+    hideStatusline = true;
+    hideTabline = true;
+    center = [
+      { icon = " "; desc = "Taking Notes (Norg)       SPC n n"; action = "Telescope neorg switch_workspace"; }
+      { icon = " "; desc = "Find File                 SPC f f"; action = "Telescope find_files"; }
+      { icon = " "; desc = "Recents                   SPC f o"; action = "Telescope oldfiles"; }
+      { icon = " "; desc = "Find Word                 SPC f w"; action = "Telescope live_grep"; }
+      { icon = "洛"; desc = "New File                  SPC f n"; action = "DashboardNewFile"; }
+      { icon = " "; desc = "Bookmarks                 SPC b m"; action = "Telescope marks"; }
+      { icon = " "; desc = "Load Last Session         SPC l  "; action = "SessionLoad"; }
+    ];
+    header = [
+      ''
 
                      ░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░              
                  ░░▒▓█▓▒▒▒▒▒▒▓▓██▓▓▓▒▒▒▒▓▓▒░            
@@ -42,5 +43,6 @@
                                                     
 
     ''
-  ];
+    ];
+  };
 }

@@ -22,27 +22,28 @@ in
   plugins.which-key.enable = true;
   plugins.which-key.operators = { gc = "Comments"; };
   plugins.which-key.triggers = [ "<leader>" "g" ];
+  plugins.which-key.registrations = {
+    "<leader>w" = [ "<cmd>w<cr>" "Write current buffer" ];
+    "<leader>ww" = [ "<cmd>w!<cr>" "Write current buffer forced" ];
+    "<leader>wq" = [ "<cmd>wq<cr>" "Write current buffer and quit" ];
+    "<leader>wqq" = [ "<cmd>wq<cr>" "Write & quit forced" ];
 
-  plugins.which-key.registrations."<leader>w" = [ "<cmd>w<cr>" "Write current buffer" ];
-  plugins.which-key.registrations."<leader>ww" = [ "<cmd>w!<cr>" "Write current buffer forced" ];
-  plugins.which-key.registrations."<leader>wq" = [ "<cmd>wq<cr>" "Write current buffer and quit" ];
-  plugins.which-key.registrations."<leader>wqq" = [ "<cmd>wq<cr>" "Write & quit forced" ];
+    "Y" = [ "\"+yy" "Copy to Clipboard!" ];
+    "p" = [ "\"+p" "Paste from Clipboard" ];
 
-  plugins.which-key.registrations."Y" = [ "\"+yy" "Copy to Clipboard!" ];
-  plugins.which-key.registrations."p" = [ "\"+p" "Paste from Clipboard" ];
+    "<c-h>" = [ "<c-w>h" "Move top" ];
+    "<c-j>" = [ "<c-w>j" "Move down" ];
+    "<c-k>" = [ "<c-w>k" "Move left" ];
+    "<c-l>" = [ "<c-w>l" "Move right" ];
 
-  plugins.which-key.registrations."<c-h>" = [ "<c-w>h" "Move top" ];
-  plugins.which-key.registrations."<c-j>" = [ "<c-w>j" "Move down" ];
-  plugins.which-key.registrations."<c-k>" = [ "<c-w>k" "Move left" ];
-  plugins.which-key.registrations."<c-l>" = [ "<c-w>l" "Move right" ];
+    "ff" = [ tb.findFiles "Find by files" ];
+    "fb" = [ tb.findBuffers "Find by current buffers" ];
+    "fh" = [ tb.findHelpTags "Find by help tags" ];
+    "fg" = [ tb.liveGrep "Find by words" ];
 
-  plugins.which-key.registrations."ff" = [ tb.findFiles "Find by files" ];
-  plugins.which-key.registrations."fb" = [ tb.findBuffers "Find by current buffers" ];
-  plugins.which-key.registrations."fh" = [ tb.findHelpTags "Find by help tags" ];
-  plugins.which-key.registrations."fg" = [ tb.liveGrep "Find by words" ];
-
-  plugins.which-key.registrations."<up>" = [ resize.up "resize window up" ];
-  plugins.which-key.registrations."<down>" = [ resize.down "resize window down" ];
-  plugins.which-key.registrations."<left>" = [ resize.left "resize window right" ];
-  plugins.which-key.registrations."<right>" = [ resize.right "resize window left" ];
+    "<up>" = [ resize.up "resize window up" ];
+    "<down>" = [ resize.down "resize window down" ];
+    "<left>" = [ resize.left "resize window right" ];
+    "<right>" = [ resize.right "resize window left" ];
+  };
 }

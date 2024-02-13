@@ -37,14 +37,22 @@
     "TelescopeResults"
   ];
   extraConfigLua = ''
+    -- enable elite mode
     vim.g.elite_mode = 1
+
+    -- inlay-hints related
     vim.opt.list = true
     vim.opt.listchars:append("eol:↴")
-
     require('lsp-inlayhints').setup({
       renderer = "inlay-hints/render/virtline",
     })
+
+    -- treesitter folding
+    vim.cmd [[ set foldmethod=expr ]]
+    vim.cmd [[ set foldexpr=nvim_treesitter#foldexpr() ]]
+    vim.cmd [[ set nofoldenable ]]
   '';
+
   colorscheme = "edge";
   extraConfigLuaPre = ''
         vim.cmd [[ 
