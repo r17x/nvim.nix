@@ -8,6 +8,7 @@
     ./ui.nix
     ./navigations.nix
     ./lsp.nix
+    ./writing.nix
     ./secrets.nix
   ];
 }
