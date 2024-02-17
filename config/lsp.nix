@@ -11,7 +11,12 @@
     # ghc
   ];
 
-  extraConfigLuaPost = "require'lspconfig'.ocamllsp.setup{}";
+  extraConfigLuaPost = ''
+    require'lspconfig'.ocamllsp.setup{}
+
+    -- make sync formatter when write and quit
+    vim.cmd [[cabbrev wq execute "Format sync" <bar> wq]]
+  '';
 
   filetype.extension = { "re" = "ocaml"; "rei" = "ocaml"; };
 
@@ -74,6 +79,32 @@
 
       tsserver.enable = true;
       tsserver.autostart = true;
+      tsserver.extraOptions = {
+        settings = {
+          javascript = {
+            inlayHints = {
+              includeInlayEnumMemberValueHints = true;
+              includeInlayFunctionLikeReturnTypeHints = true;
+              includeInlayFunctionParameterTypeHints = true;
+              includeInlayParameterNameHints = "all"; # 'none' | 'literals' | 'all';
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+              includeInlayPropertyDeclarationTypeHints = true;
+              includeInlayVariableTypeHints = true;
+            };
+          };
+          typescript = {
+            inlayHints = {
+              includeInlayEnumMemberValueHints = true;
+              includeInlayFunctionLikeReturnTypeHints = true;
+              includeInlayFunctionParameterTypeHints = true;
+              includeInlayParameterNameHints = "all"; # 'none' | 'literals' | 'all';
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+              includeInlayPropertyDeclarationTypeHints = true;
+              includeInlayVariableTypeHints = true;
+            };
+          };
+        };
+      };
 
       rnix-lsp.enable = true;
       rnix-lsp.autostart = true;
