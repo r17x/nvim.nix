@@ -45,6 +45,9 @@
     onAttach = builtins.readFile ./lsp.onAttach.lua;
     postConfig = builtins.readFile ./lsp.postConfig.lua;
     servers = {
+      ccls.enable = true;
+      ccls.autostart = true;
+
       bashls.enable = true;
       bashls.autostart = true;
 
