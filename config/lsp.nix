@@ -68,6 +68,31 @@
 
       jsonls.enable = true;
       jsonls.autostart = true;
+      jsonls.extraOptions.settings.json = {
+        validate.enable = true;
+        schemas = [
+          {
+            description = "Turbo.build configuration file";
+            fileMatch = [ "turbo.json" ];
+            url = "https://turbo.build/schema.json";
+          }
+          {
+            description = "TypeScript compiler configuration file";
+            fileMatch = [ "tsconfig.json" "tsconfig.*.json" ];
+            url = "https://json.schemastore.org/tsconfig.json";
+          }
+          {
+            description = "ReScript compiler schema";
+            fileMatch = [ "bsconfig.json" "rescript.json" ];
+            url = "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/87d78697d7a1eed75c9de55bbdc476540d6f77bb/docs/docson/build-schema.json";
+          }
+          {
+            description = "ReScript v11 compiler schema ";
+            fileMatch = [ "rescript.json" ];
+            url = "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/master/docs/docson/build-schema.json";
+          }
+        ];
+      };
 
       lua-ls.enable = true;
       lua-ls.autostart = true;
