@@ -10,7 +10,7 @@
   plugins.which-key.registrations."<leader>zm" = [ "<cmd>ZenMode<cr>" "Focus like a Japanese Philosopher 🧘" ];
 
   plugins.neorg.enable = true;
-  plugins.neorg.lazyLoading = true;
+  plugins.neorg.lazyLoading = false;
   plugins.neorg.modules = {
     "core.defaults" = { __empty = null; };
     "core.integrations.treesitter" = { };

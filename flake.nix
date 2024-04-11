@@ -51,9 +51,7 @@
               # inherit (inputs) foo;
             };
           };
-        in
-        {
-          _module.args.pkgs = import nixpkgs {
+          pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
             overlays = [
@@ -67,6 +65,9 @@
               })
             ];
           };
+        in
+        {
+          _module.args.pkgs = pkgs;
 
           checks = {
             # Run `nix flake check .` to verify that your config is not broken
@@ -75,6 +76,8 @@
               name = "A nixvim configuration";
             };
           };
+
+          devShells.default = pkgs.mkShell { packages = [ nvim ]; };
 
           packages = {
             # Lets you run `nix run .` to start nixvim

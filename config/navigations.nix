@@ -21,7 +21,7 @@ in
 
   plugins.which-key.enable = true;
   plugins.which-key.operators = { gc = "Comments"; };
-  plugins.which-key.triggers = [ "<leader>" "g" ];
+  plugins.which-key.triggers = [ "<leader>" "g" "f" ];
   plugins.which-key.registrations = {
     "<leader>w" = [ "<cmd>w<cr>" "Write current buffer" ];
     "<leader>ww" = [ "<cmd>w!<cr>" "Write current buffer forced" ];

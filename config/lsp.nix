@@ -1,17 +1,21 @@
 { pkgs, ... }:
+
 {
   extraPackages = [
     pkgs.ocamlPackages.ocaml-lsp
     # For better format in OCaml Lang need to install 
     # 👇
     # pkgs.ocamlPackages.ocamlformat
-
-    # For Haskell
-    # 👇
-    # ghc
+    pkgs.cht-sh
   ];
 
+  extraPlugins = with pkgs.vimPlugins; [  telescope-manix telescope-github-nvim telescope-cheat-nvim];
+
   extraConfigLuaPost = ''
+    require('telescope').load_extension('manix')
+    require('telescope').load_extension('gh')
+    require('telescope').load_extension('cheat')
+
     require'lspconfig'.ocamllsp.setup{}
 
     -- make sync formatter when write and quit
@@ -37,7 +41,20 @@
     "gd" = [ "<cmd>Lspsaga peek_definition<cr>" "Peek Definition" ];
     "gr" = [ "<cmd>Lspsaga rename<cr>" "Code Rename" ];
     "gs" = [ ''<cmd>lua require("wtf").search() <cr>'' "Search diagnostic with Google" ];
-    "<leader>f" = [ "<cmd>Lspsaga finder<cr>" "Code Finder" ];
+    "gcf" = [ "<cmd>Lspsaga finder<cr>" "Code Finder" ];
+    # telescope with lsp
+
+    "fnix" = [ "<cmd>Telescope manix<cr>" "Find nix with man|nix" ];
+    "flr" = [ "<cmd>lua require'telescope.builtin'.lsp_references()<cr>" "[Lsp] Find References" ];
+    "fic" = [ "<cmd>lua require'telescope.builtin'.lsp_incoming_calls()<cr>" "[Lsp] Find Incoming Calls" ];
+    "foc" = [ "<cmd>lua require'telescope.builtin'.lsp_outgoing_calls()<cr>" "[Lsp] Find Outgoing Calls" ];
+    "fds" = [ "<cmd>lua require'telescope.builtin'.lsp_document_symbols()<cr>" "[Lsp] Find Document Symbols" ];
+    "fws" = [ "<cmd>lua require'telescope.builtin'.lsp_workspace_symbols()<cr>" "[Lsp] Find Workspace Symbols" ];
+    "fdws" = [ "<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols()<cr>" "[Lsp] Find Dynamic Workspace Symbols" ];
+    "fld" = [ "<cmd>lua require'telescope.builtin'.diagnostics()<cr>" "[Lsp] Find Diagnostics" ];
+    "fli" = [ "<cmd>lua require'telescope.builtin'.lsp_implementations()<cr>" "[Lsp] Find Implementations" ];
+    "flD" = [ "<cmd>lua require'telescope.builtin'.lsp_definitions()<cr>" "[Lsp] Find Definitions" ];
+    "flt" = [ "<cmd>lua require'telescope.builtin'.lsp_type_definitions()<cr>" "[Lsp] Find Type Definitions" ];
   };
 
   plugins.lsp = {
