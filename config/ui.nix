@@ -24,9 +24,9 @@
   plugins.nvim-tree.renderer.indentMarkers.enable = true;
 
   plugins.indent-blankline.enable = true;
-  plugins.indent-blankline.indent.char = "┊";
-  plugins.indent-blankline.exclude.buftypes = [ "terminal" "neorg" ];
-  plugins.indent-blankline.exclude.filetypes = [
+  plugins.indent-blankline.settings.indent.char = "┊";
+  plugins.indent-blankline.settings.exclude.buftypes = [ "terminal" "neorg" ];
+  plugins.indent-blankline.settings.exclude.filetypes = [
     "NvimTree"
     "sagaoutline"
     "help"

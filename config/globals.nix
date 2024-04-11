@@ -3,7 +3,7 @@ let
 in
 {
   config.globals.mapleader = " ";
-  config.options = {
+  config.opts = {
     number = true;
     relativenumber = true;
     mouse = "";

@@ -7,6 +7,7 @@
 
   plugins.which-key.registrations."<leader>oj" = [ "<cmd>Neorg journal today<cr>" "Journal Today" ];
   plugins.which-key.registrations."<leader>oh" = [ "<cmd>Neorg workspace home<cr>" "Open Neorg Home" ];
+  plugins.which-key.registrations."<leader>zm" = [ "<cmd>ZenMode<cr>" "Focus like a Japanese Philosopher 🧘" ];
 
   plugins.neorg.enable = true;
   plugins.neorg.lazyLoading = true;
@@ -36,7 +37,11 @@
 
   plugins.markdown-preview = {
     enable = true;
-    theme = "dark";
-    port = 8686;
+    settings.theme = "dark";
+    settings.port = "8686";
+  };
+
+  plugins.zen-mode = {
+    enable = true;
   };
 }
