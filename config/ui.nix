@@ -1,12 +1,15 @@
 { pkgs, ... }:
 {
-  extraPlugins = with pkgs.vimPlugins; [ edge unicode-vim lsp-inlayhints-nvim lualine-lsp-progress ];
+  extraPlugins = with pkgs.vimPlugins; [ edge unicode-vim lualine-lsp-progress ];
 
-  plugins.which-key.registrations."<c-n>" = [ "<cmd>NvimTreeToggle<CR>" "Open Tree in left side" ];
-  plugins.which-key.registrations."<leader>tl" = [ "<cmd>lua vim.g.unhide_lualine = not vim.g.unhide_lualine; require('lualine').hide({ unhide = vim.g.unhide_lualine })<cr>" "Toggle Status Line" ];
-  plugins.which-key.registrations."<leader>tib" = [ "<cmd>IBLToggle<cr>" "Toggle Indent Blankline" ];
-  plugins.which-key.registrations."<leader>tih" = [ "<cmd>lua require('lsp-inlayhints').toggle()<cr>" "Toggle Inlay Hints" ];
-  plugins.which-key.registrations."<leader>tc" = [ "<cmd>ColorizerToggle<cr>" "Toggle Colorizer" ];
+  plugins.which-key.registrations = {
+    "<c-n>" = [ "<cmd>NvimTreeToggle<CR>" "Open Tree in left side" ];
+    "<leader>tl" = [ "<cmd>lua vim.g.unhide_lualine = not vim.g.unhide_lualine; require('lualine').hide({ unhide = vim.g.unhide_lualine })<cr>" "Toggle Status Line" ];
+    "<leader>tib" = [ "<cmd>IBLToggle<cr>" "Toggle Indent Blankline" ];
+    "<leader>tih" = [ "<cmd>lua require('lsp-inlayhints').toggle()<cr>" "Toggle Inlay Hints" ];
+    "<leader>tc" = [ "<cmd>ColorizerToggle<cr>" "Toggle Colorizer" ];
+    "fhi" = [ "<cmd>Telescope highlights<cr>" "Find Highlight Groups" ];
+  };
 
   plugins.nvim-colorizer.enable = true;
   plugins.cursorline.enable = true;
@@ -40,12 +43,8 @@
     -- enable elite mode
     vim.g.elite_mode = 1
 
-    -- inlay-hints related
     vim.opt.list = true
     vim.opt.listchars:append("eol:↴")
-    require('lsp-inlayhints').setup({
-      renderer = "inlay-hints/render/virtline",
-    })
 
     -- treesitter folding
     vim.cmd [[ set nofoldenable ]]
