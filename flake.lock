@@ -149,6 +149,22 @@
         "type": "github"
       }
     },
+    "neovim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1712942574,
+        "narHash": "sha256-2yOxPxU7qePdjtUIhqdyUV3RZf9KXSmy958MGjIsi70=",
+        "owner": "neovim",
+        "repo": "neovim",
+        "rev": "2c5fd3f966193a5a44e0661160c2c7ddf0a96097",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neovim",
+        "repo": "neovim",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -263,8 +279,10 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+        "neovim": "neovim",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "vimPlugins_inlay-hints": "vimPlugins_inlay-hints",
         "vimPlugins_nvim-sops": "vimPlugins_nvim-sops"
       }
     },
@@ -295,6 +313,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "vimPlugins_inlay-hints": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1660353523,
+        "narHash": "sha256-cDWx08N+NhN5Voxh8f7RGzerbAYB5FHE6TpD4/o/MIQ=",
+        "owner": "simrat39",
+        "repo": "inlay-hints.nvim",
+        "rev": "006b0898f5d3874e8e528352103733142e705834",
+        "type": "github"
+      },
+      "original": {
+        "owner": "simrat39",
+        "repo": "inlay-hints.nvim",
         "type": "github"
       }
     },

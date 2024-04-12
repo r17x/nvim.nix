@@ -8,18 +8,25 @@
     nixvim.inputs.flake-parts.follows = "flake-parts";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    # NVIM v0.10.0-dev-2873+g8cca78715
+    neovim.url = "github:neovim/neovim";
+    neovim.flake = false;
+
     vimPlugins_nvim-sops.url = "github:lucidph3nx/nvim-sops";
     vimPlugins_nvim-sops.flake = false;
+    vimPlugins_inlay-hints.url = "github:simrat39/inlay-hints.nvim";
+    vimPlugins_inlay-hints.flake = false;
   };
 
   outputs =
     { nixvim
     , nixpkgs
     , flake-parts
+    , neovim
     , ...
     } @ inputs:
     let
-      config = import ./config; # import the module directly
+      nixvimConfig = import ./config; # import the module directly
 
       # all vimPlugins from inputs with prefix "vimPlugins_"
       # example:
@@ -45,17 +52,21 @@
           nixvim' = nixvim.legacyPackages.${system};
           nvim = nixvim'.makeNixvimWithModule {
             inherit pkgs;
-            module = config;
+            module = nixvimConfig;
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
               # inherit (inputs) foo;
             };
           };
-          pkgs = import nixpkgs {
+
+        in
+        {
+          _module.args.pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
             overlays = [
               (_final: prev: {
+                neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (_: { version = "0.10.0-dev-2873"; src = neovim; });
                 vimPlugins = prev.vimPlugins.extend (_final: _prev:
                   mkFlake2VimPlugins {
                     buildVimPlugin = prev.vimUtils.buildVimPlugin;
@@ -65,9 +76,6 @@
               })
             ];
           };
-        in
-        {
-          _module.args.pkgs = pkgs;
 
           checks = {
             # Run `nix flake check .` to verify that your config is not broken
