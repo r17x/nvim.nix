@@ -82,6 +82,15 @@
 
       gopls.enable = true;
       gopls.autostart = true;
+      gopls.extraOptions.settings.gopls.hints = {
+        assignVariableTypes = true;
+        compositeLiteralFields = true;
+        compositeLiteralTypes = true;
+        constantValues = true;
+        functionTypeParameters = true;
+        parameterNames = true;
+        rangeVariableTypes = true;
+      };
 
       hls.enable = true;
       hls.autostart = true;
