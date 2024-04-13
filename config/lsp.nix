@@ -6,10 +6,9 @@
     # For better format in OCaml Lang need to install 
     # 👇
     # pkgs.ocamlPackages.ocamlformat
-    pkgs.cht-sh
   ];
 
-  extraPlugins = with pkgs.vimPlugins; [  telescope-manix telescope-github-nvim telescope-cheat-nvim];
+  extraPlugins = with pkgs.vimPlugins; [ telescope-github-nvim ];
 
   extraConfigLuaPost = ''
     require('telescope').load_extension('manix')
