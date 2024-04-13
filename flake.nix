@@ -7,6 +7,7 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.inputs.flake-parts.follows = "flake-parts";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-compat = { url = "github:inclyc/flake-compat"; flake = false; };
 
     # NVIM v0.10.0-dev-2873+g8cca78715
     neovim.url = "github:neovim/neovim";
