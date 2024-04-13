@@ -29,12 +29,12 @@ in
     "fghg" = [ "<cmd>Telescope gh gist<cr>" ];
     "fghr" = [ "<cmd>Telescope gh run<cr>" ];
 
-    "fgc" = [ "<cmd>Telescope git_commits<cr>" "Lists git commits with diff preview, checkout action <cr>, reset mixed <C-r>m, reset soft <C-r>s and reset hard <C-r>h"];
-    "fgf" = [ "<cmd>Telescope git_bcommits<cr>" "Lists buffer's git commits with diff preview and checks them out on <cr>"];
-    "fgr" = [ "<cmd>Telescope git_bcommits_range<cr>" "Lists buffer's git commits in a range of lines. Use options from and to to specify the range. In visual mode, lists commits for the selected lines"];
-    "fgb" = [ "<cmd>Telescope git_branches<cr>" "Lists all branches with log preview, checkout action <cr>, track action <C-t>, rebase action<C-r>, create action <C-a>, switch action <C-s>, delete action <C-d> and merge action <C-y>"];
-    "fgs" = [ "<cmd>Telescope git_status<cr>" "Lists current changes per file with diff preview and add action. (Multi-selection still WIP)"];
-    "fgw" = [ "<cmd>Telescope git_stash<cr>" "Lists stash items in current repository with ability to apply them on <cr>"];
+    "fgc" = [ "<cmd>Telescope git_commits<cr>" "Lists git commits with diff preview, checkout action <cr>, reset mixed <C-r>m, reset soft <C-r>s and reset hard <C-r>h" ];
+    "fgf" = [ "<cmd>Telescope git_bcommits<cr>" "Lists buffer's git commits with diff preview and checks them out on <cr>" ];
+    "fgr" = [ "<cmd>Telescope git_bcommits_range<cr>" "Lists buffer's git commits in a range of lines. Use options from and to to specify the range. In visual mode, lists commits for the selected lines" ];
+    "fgb" = [ "<cmd>Telescope git_branches<cr>" "Lists all branches with log preview, checkout action <cr>, track action <C-t>, rebase action<C-r>, create action <C-a>, switch action <C-s>, delete action <C-d> and merge action <C-y>" ];
+    "fgs" = [ "<cmd>Telescope git_status<cr>" "Lists current changes per file with diff preview and add action. (Multi-selection still WIP)" ];
+    "fgw" = [ "<cmd>Telescope git_stash<cr>" "Lists stash items in current repository with ability to apply them on <cr>" ];
 
   };
 
