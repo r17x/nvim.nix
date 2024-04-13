@@ -15,7 +15,14 @@
     require('telescope').load_extension('gh')
     require('telescope').load_extension('cheat')
 
-    require'lspconfig'.ocamllsp.setup{}
+    require'lspconfig'.ocamllsp.setup({
+      settings = {
+        codelens = {enable = false },
+        extendedHover = { enable = true },
+        duneDiagnostics = {enable = false },
+        inlayHints = {enable = true},
+      }
+    })
 
     -- make sync formatter when write and quit
     vim.cmd [[cabbrev wq execute "Format sync" <bar> wq]]
