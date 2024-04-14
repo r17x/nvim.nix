@@ -155,32 +155,23 @@
 
       tsserver.enable = true;
       tsserver.autostart = true;
-      tsserver.extraOptions = {
-        settings = {
-          javascript = {
-            inlayHints = {
-              includeInlayEnumMemberValueHints = true;
-              includeInlayFunctionLikeReturnTypeHints = true;
-              includeInlayFunctionParameterTypeHints = true;
-              includeInlayParameterNameHints = "all"; # 'none' | 'literals' | 'all';
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-              includeInlayPropertyDeclarationTypeHints = true;
-              includeInlayVariableTypeHints = true;
-            };
+
+      tsserver.extraOptions.settings =
+        let
+          inlayHints = {
+            includeInlayParameterNameHints = "all";
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false;
+            includeInlayEnumMemberValueHints = true;
+            includeInlayFunctionLikeReturnTypeHints = false;
+            includeInlayFunctionParameterTypeHints = true;
+            includeInlayPropertyDeclarationTypeHints = true;
+            includeInlayVariableTypeHints = true;
           };
-          typescript = {
-            inlayHints = {
-              includeInlayEnumMemberValueHints = true;
-              includeInlayFunctionLikeReturnTypeHints = true;
-              includeInlayFunctionParameterTypeHints = true;
-              includeInlayParameterNameHints = "all"; # 'none' | 'literals' | 'all';
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-              includeInlayPropertyDeclarationTypeHints = true;
-              includeInlayVariableTypeHints = true;
-            };
-          };
+        in
+        {
+          javascript = { inherit inlayHints; };
+          typescript = { inherit inlayHints; };
         };
-      };
 
       nixd.enable = true;
       nixd.autostart = true;
