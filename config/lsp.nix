@@ -13,6 +13,16 @@
 
   extraPlugins = with pkgs.vimPlugins; [ telescope-github-nvim ];
 
+  # make custom command
+  extraConfigLuaPre = ''
+    vim.api.nvim_create_user_command('LspInlay',function()
+      local buf = vim.api.nvim_get_current_buf()
+      if buf ~= nil or buf ~= 0 then
+        vim.lsp.inlay_hint.enable(buf, not vim.lsp.inlay_hint.is_enabled())
+      end
+    end,{})
+  '';
+
   extraConfigLuaPost = ''
     require('telescope').load_extension('gh')
 
@@ -26,7 +36,7 @@
     })
 
     -- make sync formatter when write and quit
-    vim.cmd [[cabbrev wq execute "Format sync" <bar> wq]]
+    vim.cmd [[ cabbrev wq execute "Format sync" <bar> wq ]]
   '';
 
   filetype.extension = { "re" = "ocaml"; "rei" = "ocaml"; };
@@ -50,7 +60,7 @@
     "gs" = [ ''<cmd>lua require("wtf").search() <cr>'' "Search diagnostic with Google" ];
     "gcf" = [ "<cmd>Lspsaga finder<cr>" "Code Finder" ];
     # telescope with lsp
-
+    "<leader>tih" = [ "<cmd>LspInlay<cr>" "Toggle Inlay Hints" ];
     "fnix" = [ "<cmd>Telescope manix<cr>" "Find nix with man|nix" ];
     "flr" = [ "<cmd>lua require'telescope.builtin'.lsp_references()<cr>" "[Lsp] Find References" ];
     "fic" = [ "<cmd>lua require'telescope.builtin'.lsp_incoming_calls()<cr>" "[Lsp] Find Incoming Calls" ];
@@ -205,8 +215,8 @@
         "<C-e>" = "cmp.mapping.close()";
         "<C-f>" = "cmp.mapping.scroll_docs(4)";
         "<CR>" = "cmp.mapping.confirm({ select = true })";
-"<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-  "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+        "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+        "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
       };
 
       sources = [
