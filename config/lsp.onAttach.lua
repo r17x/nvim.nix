@@ -21,6 +21,5 @@ function onAttach(client, bufnr)
     signature.on_attach(signature_config, bufnr)
   end
 
-  require('lsp-inlayhints').on_attach(client, bufnr, false)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
