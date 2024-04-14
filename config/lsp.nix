@@ -4,10 +4,11 @@
   highlightOverride.LspInlayHint.link = "InclineNormalNc";
 
   extraPackages = [
-    pkgs.ocamlPackages.ocaml-lsp
     # For better format in OCaml Lang need to install 
     # 👇
     # pkgs.ocamlPackages.ocamlformat
+    pkgs.ocamlPackages.ocaml-lsp
+    pkgs.nixpkgs-fmt
   ];
 
   extraPlugins = with pkgs.vimPlugins; [ telescope-github-nvim ];
