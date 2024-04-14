@@ -6,7 +6,6 @@
     "<c-n>" = [ "<cmd>NvimTreeToggle<CR>" "Open Tree in left side" ];
     "<leader>tl" = [ "<cmd>lua vim.g.unhide_lualine = not vim.g.unhide_lualine; require('lualine').hide({ unhide = vim.g.unhide_lualine })<cr>" "Toggle Status Line" ];
     "<leader>tib" = [ "<cmd>IBLToggle<cr>" "Toggle Indent Blankline" ];
-    "<leader>tih" = [ "<cmd>lua require('lsp-inlayhints').toggle()<cr>" "Toggle Inlay Hints" ];
     "<leader>tc" = [ "<cmd>ColorizerToggle<cr>" "Toggle Colorizer" ];
     "fhi" = [ "<cmd>Telescope highlights<cr>" "Find Highlight Groups" ];
   };
@@ -133,6 +132,7 @@
   plugins.treesitter.enable = true;
   plugins.treesitter.folding = true;
   plugins.treesitter.indent = true;
+  plugins.treesitter.nixvimInjections = true;
 
   plugins.rainbow-delimiters.enable = true;
   plugins.rainbow-delimiters.highlight = [
