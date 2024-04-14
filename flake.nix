@@ -10,13 +10,8 @@
     flake-compat = { url = "github:inclyc/flake-compat"; flake = false; };
 
     # NVIM v0.10.0-dev-2873+g8cca78715
-    neovim.url = "github:neovim/neovim";
-    neovim.flake = false;
-
-    vimPlugins_nvim-sops.url = "github:lucidph3nx/nvim-sops";
-    vimPlugins_nvim-sops.flake = false;
-    vimPlugins_inlay-hints.url = "github:simrat39/inlay-hints.nvim";
-    vimPlugins_inlay-hints.flake = false;
+    neovim = { url = "github:neovim/neovim"; flake = false; };
+    vimPlugins_nvim-sops = { url = "github:lucidph3nx/nvim-sops"; flake = false; };
   };
 
   outputs =
@@ -48,25 +43,18 @@
         , system
         , ...
         }:
-        let
-          nixvimLib = nixvim.lib.${system};
-          nixvim' = nixvim.legacyPackages.${system};
-          nvim = nixvim'.makeNixvimWithModule {
-            inherit pkgs;
-            module = nixvimConfig;
-            # You can use `extraSpecialArgs` to pass additional arguments to your module files
-            extraSpecialArgs = {
-              # inherit (inputs) foo;
-            };
-          };
-
-        in
         {
           _module.args.pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
             overlays = [
               (_final: prev: {
+                nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
+                  inherit pkgs;
+                  module = nixvimConfig;
+                  # You can use `extraSpecialArgs` to pass additional arguments to your module files
+                  # extraSpecialArgs = { # inherit (inputs) foo; };
+                };
                 neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (_: { version = "0.10.0-dev-2873"; src = neovim; });
                 vimPlugins = prev.vimPlugins.extend (_final: _prev:
                   mkFlake2VimPlugins {
@@ -80,17 +68,17 @@
 
           checks = {
             # Run `nix flake check .` to verify that your config is not broken
-            default = nixvimLib.check.mkTestDerivationFromNvim {
-              inherit nvim;
+            default = nixvim.lib.${system}.check.mkTestDerivationFromNvim {
+              inherit (pkgs) nvim;
               name = "A nixvim configuration";
             };
           };
 
-          devShells.default = pkgs.mkShell { packages = [ nvim ]; };
+          devShells.default = pkgs.mkShell { packages = [ pkgs.nvim ]; };
 
           packages = {
             # Lets you run `nix run .` to start nixvim
-            default = nvim;
+            default = pkgs.nvim;
           };
         };
     };
