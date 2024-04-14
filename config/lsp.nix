@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  highlightOverride.LspInlayHint.link = "InclineNormalNc";
+
   extraPackages = [
     pkgs.ocamlPackages.ocaml-lsp
     # For better format in OCaml Lang need to install 
