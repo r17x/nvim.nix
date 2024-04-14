@@ -11,9 +11,7 @@
   extraPlugins = with pkgs.vimPlugins; [ telescope-github-nvim ];
 
   extraConfigLuaPost = ''
-    require('telescope').load_extension('manix')
     require('telescope').load_extension('gh')
-    require('telescope').load_extension('cheat')
 
     require'lspconfig'.ocamllsp.setup({
       settings = {
