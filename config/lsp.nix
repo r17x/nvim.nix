@@ -104,6 +104,11 @@
         validate.enable = true;
         schemas = [
           {
+            description = "nixd schema";
+            fileMatch = [ ".nixd.json" ];
+            url = "https://raw.githubusercontent.com/nix-community/nixd/main/nixd/docs/nixd-schema.json";
+          }
+          {
             description = "Turbo.build configuration file";
             fileMatch = [ "turbo.json" ];
             url = "https://turbo.build/schema.json";
