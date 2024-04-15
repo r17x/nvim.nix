@@ -221,8 +221,6 @@
         { name = "cmdline"; }
         { name = "spell"; }
         { name = "dictionary"; }
-        { name = "fish"; }
-        { name = "tmux"; }
         { name = "treesitter"; }
       ];
 
@@ -237,7 +235,7 @@
   plugins.cmp-cmdline.enable = true;
   plugins.cmp-spell.enable = true;
   plugins.cmp-dictionary.enable = true;
-  plugins.cmp-fish.enable = true;
-  plugins.cmp-tmux.enable = true;
   plugins.cmp-treesitter.enable = true;
+  plugins.cmp-fish.enable = false;
+  plugins.cmp-tmux.enable = false;
 }
