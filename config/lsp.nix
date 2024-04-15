@@ -148,7 +148,7 @@
       nil_ls.enable = true;
       nil_ls.autostart = true;
 
-      rust-analyzer.enable = false;
+      rust-analyzer.enable = true;
       rust-analyzer.autostart = true;
       rust-analyzer.installCargo = false;
       rust-analyzer.installRustc = false;
