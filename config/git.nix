@@ -13,10 +13,8 @@ let
 in
 
 {
-  extraPlugins = with pkgs.vimPlugins; [ vimagit ];
-
   plugins.which-key.registrations = {
-    "mg" = [ "<cmd>Magit<CR>" "Open Magit" ];
+    "mg" = [ "<cmd>Neogit<CR>" "Open Neogit" ];
     "<leader>gss" = [ gs.toggle_signs "Toggle Sign Column" ];
     "<leader>gsn" = [ gs.toggle_numhl "Toggle Num Hightlight" ];
     "<leader>gsl" = [ gs.toggle_linehl "Toggle Line Hightlight" ];
@@ -35,7 +33,6 @@ in
     "fgb" = [ "<cmd>Telescope git_branches<cr>" "Lists all branches with log preview, checkout action <cr>, track action <C-t>, rebase action<C-r>, create action <C-a>, switch action <C-s>, delete action <C-d> and merge action <C-y>" ];
     "fgs" = [ "<cmd>Telescope git_status<cr>" "Lists current changes per file with diff preview and add action. (Multi-selection still WIP)" ];
     "fgw" = [ "<cmd>Telescope git_stash<cr>" "Lists stash items in current repository with ability to apply them on <cr>" ];
-
   };
 
   plugins.neogit.enable = true;
