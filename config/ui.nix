@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  extraPlugins = with pkgs.vimPlugins; [ edge unicode-vim lualine-lsp-progress ];
+  extraPlugins = with pkgs.vimPlugins; [ edge unicode-vim lualine-lsp-progress vim-wakatime ];
 
   plugins.which-key.registrations = {
     "<c-n>" = [ "<cmd>NvimTreeToggle<CR>" "Open Tree in left side" ];
@@ -9,6 +9,10 @@
     "<leader>tc" = [ "<cmd>ColorizerToggle<cr>" "Toggle Colorizer" ];
     "fhi" = [ "<cmd>Telescope highlights<cr>" "Find Highlight Groups" ];
   };
+
+  plugins.presence-nvim.enable = true;
+  plugins.presence-nvim.enableLineNumber = true;
+  plugins.presence-nvim.autoUpdate = true;
 
   plugins.nvim-colorizer.enable = true;
   plugins.cursorline.enable = true;
