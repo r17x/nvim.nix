@@ -1,5 +1,6 @@
 # Neovim over Nix
 
+> ⚠️‼️ UNMANTAINED - *moved* to [https://github.comr/r17x/nixpkgs](r17x/nixpkgs)
 I manage and write Neovim configurations in Nix using Nixvim
 
 ## Configuring
